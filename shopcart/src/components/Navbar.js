@@ -19,7 +19,7 @@ class Navbar extends Component {
     return (
       <nav style={styles.navbar}>
         <Logo />
-        <ShopCart />
+        <ShopCart cartQuantity={this.props.cartQuantity} />
       </nav>
     );
   }

@@ -21,7 +21,9 @@ class ShopCart extends Component {
     return (
       <div>
         <span style={styles.bubble}>
-          <BubbleAlert value={12} />
+          {this.props.cartQuantity !== 0 ? (
+            <BubbleAlert value={this.props.cartQuantity} />
+          ) : null}
         </span>
         <button style={styles.shopCart}>Cart</button>
       </div>

@@ -12,7 +12,7 @@ const styles = {
 };
 class BubbleAlert extends Component {
   getNumber(n) {
-    if (!n) {
+    if (isNaN(n)) {
       return "";
     }
     return n > 9 ? "9+" : n;
