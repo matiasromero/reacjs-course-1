@@ -23,14 +23,8 @@ class App extends Component {
         img: "https://images.freeimages.com/images/large-previews/b36/tomato-1326722.jpg",
       },
     ],
-    cart: [
-      // {
-      //   name: "Apple",
-      //   price: 200.0,
-      //   img: "https://images.freeimages.com/images/large-previews/e93/apple-1524168.jpg",
-      //   quantity: 1
-      // }
-    ],
+    cart: [],
+    cartVisible: false,
   };
 
   addToCart = (product) => {
@@ -51,15 +45,24 @@ class App extends Component {
     });
   };
 
+  showCart = () => {
+    if (!this.state.cart.length) return;
+    this.setState({ cartVisible: !this.state.cartVisible });
+  };
+
   render() {
     const quantity = this.state.cart.reduce((a, b) => {
-      console.log(a);
-      console.log(b);
       return a + b.quantity;
     }, 0);
+    const { cartVisible } = this.state;
     return (
       <div>
-        <Navbar cartQuantity={quantity} />
+        <Navbar
+          cartQuantity={quantity}
+          cart={this.state.cart}
+          showCart={this.showCart}
+          cartVisible={cartVisible}
+        />
         <Layout>
           <Title>Tienda</Title>
           <Products addToCart={this.addToCart} products={this.state.products} />
