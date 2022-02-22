@@ -20,6 +20,16 @@ const useCounter = (inicial) => {
   return [counter, increase, decrease];
 };
 
+const Interval = ({ counter }) => {
+  useEffect(() => {
+    const i = setInterval(() => {
+      console.log(counter);
+    }, 1000);
+    return () => clearInterval(i);
+  }, [counter]);
+  return <p>Interval</p>;
+};
+
 const App = () => {
   const [counter, increase, decrease] = useCounter(0);
   useEffect(() => {
@@ -32,6 +42,7 @@ const App = () => {
       <button onClick={decrease}> - </button>
       <span style={styles.counter}>Counter: {counter}</span>
       <button onClick={increase}> + </button>
+      <Interval counter={counter} />
     </div>
   );
 };
