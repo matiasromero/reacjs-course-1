@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 // rules for hooks:
 //  can't be called inside a loop (if, while, else, foreach)
@@ -8,6 +8,21 @@ const styles = {
     margin: "0 20 px",
   },
 };
+
+// class App extends Component {
+//   state = { counter: 0 };
+//   incrementar = () => {
+//     this.setState({ counter: this.state.counter + 1 });
+//   };
+//   render() {
+//     return (
+//       <div>
+//         <span style={styles.counter}>Counter: {this.state.counter}</span>
+//         <button onClick={this.incrementar}> + </button>
+//       </div>
+//     );
+//   }
+// }
 
 const useCounter = (inicial) => {
   const [counter, setCounter] = useState(inicial);
@@ -22,11 +37,6 @@ const useCounter = (inicial) => {
 
 const App = () => {
   const [counter, increase, decrease] = useCounter(0);
-  useEffect(() => {
-    document.title = counter;
-    console.log("effect!");
-  }, [counter]);
-
   return (
     <div>
       <button onClick={decrease}> - </button>
