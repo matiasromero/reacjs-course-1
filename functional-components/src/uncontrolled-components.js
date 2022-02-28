@@ -10,7 +10,7 @@ const App = () => {
         <span>lala</span>
         <input name="field" />
       </div>
-      <input type="file" name="field-file" />
+      <input name="field-2" />
       <input type="submit" value="Send" />
     </form>
   );
