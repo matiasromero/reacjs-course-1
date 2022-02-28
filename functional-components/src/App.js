@@ -1,18 +1,24 @@
+import { useState } from "react";
 const App = () => {
-  const submit = (e) => {
-    e.preventDefault();
-    const data = Array.from(new FormData(e.target));
-    console.log(Object.fromEntries(data));
+  const [value, setValue] = useState({ normal: "Nombre", text: "Descripcion" });
+  const handleChange = (e) => {
+    setValue({
+      ...value,
+      [e.target.name]: e.target.value,
+    });
   };
+  console.log(value);
   return (
-    <form onSubmit={submit}>
-      <div>
-        <span>lala</span>
-        <input name="field" />
-      </div>
-      <input type="file" name="field-file" />
-      <input type="submit" value="Send" />
-    </form>
+    <div>
+      {value.length < 5 ? <span>longitud mínima de 5</span> : null}
+      <input
+        type="text"
+        name="normal"
+        value={value.normal}
+        onChange={handleChange}
+      />
+      <textarea name="text" onChange={handleChange} value={value.text} />
+    </div>
   );
 };
 
